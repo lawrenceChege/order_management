@@ -32,11 +32,11 @@ class NamedModel(BaseModel):
 		abstract = True
 
 
-class State(GenericBaseModel):
+class State(NamedModel):
 	"""
 	States for objects lifecycle e.g. "Active", "Deleted", "Disabled", etc
 	"""
-
+	
 	def __str__(self):
 		return '%s' % self.name
 
@@ -71,3 +71,34 @@ class State(GenericBaseModel):
 
 		state = cls.objects.get(name='Disabled')
 		return state
+
+
+class Currency(NamedModel):
+	"""
+	Defines a type of Currency and its code e.g US Dollar - USD
+	"""
+
+	state = models.ForeignKey(State, default=State.default_state, on_delete=models.CASCADE)
+	code = models.CharField(max_length=10)
+
+	def __str__(self):
+		return '%s - %s' % (self.name, self.code)
+
+	class Meta(NamedModel.Meta):
+		verbose_name_plural = 'Currencies'
+		unique_together = ('name',)
+		
+
+class Category(NamedModel):
+	"""
+	Defines a category and its code e.g Clothing, Food, Toys
+	"""
+
+	state = models.ForeignKey(State, default=State.default_state, on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return '%s' % (self.name,)
+
+	class Meta(NamedModel.Meta):
+		verbose_name_plural = 'Categories'
+		unique_together = ('name',)
