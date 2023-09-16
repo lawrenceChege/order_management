@@ -5,7 +5,7 @@ This module holds tests for the services in base module
 import pytest
 from mixer.backend.django import mixer
 
-from order_management.base.backend.services import StateService, CurrencyService
+from order_management.base.backend.services import StateService, CurrencyService, CategoryService
 from order_management.base.tests.test_setup import TestSetUp
 
 pytestmark = pytest.mark.django_db
@@ -67,3 +67,32 @@ class TestCurrencyService(TestSetUp):
 		euro = mixer.blend('order_management.base.Currency', name="Euro", code='$')
 		updated_euro = CurrencyService().update(euro.id, code="€")
 		assert updated_euro.name == "€", "Should update currency"
+
+
+class TestCategoryService(TestSetUp):
+	""" Test the Category model service"""
+	
+	def test_create(self):
+		""" Test CategoryService create method """
+		food = CategoryService().create(name="Food")
+		assert food is not None, "Should create category"
+		assert food.name == "Food", "Should create category correctly"
+	
+	def test_get(self):
+		""" Test CategoryService get method """
+		mixer.blend('order_management.base.Category', name='Clothing')
+		category = CategoryService().get(name="Clothing")
+		assert category is not None, "Should retrieve category"
+	
+	def test_filter(self):
+		""" Test CategoryService filter method """
+		mixer.cycle(3).blend('order_management.base.Category')
+		categories = CategoryService().filter()
+		assert categories is not None, "Should retrieve categories"
+		assert categories.count() == 3, "Should have 3 categories"
+	
+	def test_update(self):
+		""" Test CategoryService update method """
+		category = mixer.blend('order_management.base.Currency', name="Food")
+		updated_category = CategoryService().update(category.id, name="Food and Beverages")
+		assert updated_category.name == "Food and Beverages", "Should update category"
