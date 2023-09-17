@@ -2,8 +2,8 @@
 Model managers for models in this Base Module.
 Managers allow for smooth CRUD operations
 """
-from order_management.base.backend.service_base import ServiceBase
-from order_management.base.models import State, Currency, Category
+from .service_base import ServiceBase
+from ..models import State, Currency, Category
 
 
 class StateService(ServiceBase):

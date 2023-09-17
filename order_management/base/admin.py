@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from order_management.base.models import State, Currency, Category
+from .models import State, Currency, Category
 
 
 # Register your models here.

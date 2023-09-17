@@ -5,8 +5,8 @@ This module holds tests for the services in base module
 import pytest
 from mixer.backend.django import mixer
 
-from order_management.base.backend.services import StateService, CurrencyService, CategoryService
-from order_management.base.tests.test_setup import TestSetUp
+from ..backend.services import StateService, CurrencyService, CategoryService
+from .test_setup import TestSetUp
 
 pytestmark = pytest.mark.django_db
 
@@ -16,7 +16,7 @@ class TestStateService(TestSetUp):
 	
 	def test_get(self):
 		""" Test StateService get method """
-		mixer.blend('order_management.base.State')
+		mixer.blend('base.State')
 		state = StateService().get(name="Active")
 		assert state is not None, "Default state should be Active"
 	
