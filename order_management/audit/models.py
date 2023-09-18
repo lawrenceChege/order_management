@@ -3,7 +3,7 @@ from django.db import models, transaction
 
 from base.models import NamedModel, State, BaseModel
 
-from order_management.audit.backend.util import generate_internal_reference
+from audit.backend.generate_code import generate_internal_reference
 
 
 class ActionType(NamedModel):
