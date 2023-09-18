@@ -9,6 +9,6 @@ class CustomerAdmin(admin.ModelAdmin):
 	"""
 	Customer model admin. Defines the fields to display and which ones are searchable
 	"""
-	list_filter = ('date_created',)
-	list_display = ('user', 'code', 'date_modified', 'date_created')
-	search_fields = ('user__first_name',)
+	list_filter = ('date_joined',)
+	list_display = ('first_name', 'code')
+	search_fields = ('first_name',)

@@ -1,7 +1,7 @@
 import pytest
 from mixer.backend.django import mixer
 
-from order_management.base.tests.test_setup import TestSetUp
+from base.tests.test_setup import TestSetUp
 
 pytestmark = pytest.mark.django_db
 

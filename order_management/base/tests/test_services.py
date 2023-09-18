@@ -28,14 +28,14 @@ class TestStateService(TestSetUp):
 	
 	def test_filter(self):
 		""" Test StateService filter method """
-		mixer.cycle(3).blend('order_management.base.State')
+		mixer.cycle(3).blend('base.State')
 		states = StateService().filter()
 		assert states is not None, "Should retrieve states"
 		assert states.count() == 3, "Should have 3 states"
 	
 	def test_update(self):
 		""" Test StateService update method """
-		state = mixer.blend('order_management.base.State', name="Approval Pending")
+		state = mixer.blend('base.State', name="Approval Pending")
 		updated_state = StateService().update(state.id, name="Pending approval")
 		assert updated_state.name == "Pending approval", "Should update state"
 
@@ -51,20 +51,20 @@ class TestCurrencyService(TestSetUp):
 	
 	def test_get(self):
 		""" Test CurrencyService get method """
-		mixer.blend('order_management.base.Currency', name='Kenya Shilling', code='KSH')
+		mixer.blend('base.Currency', name='Kenya Shilling', code='KSH')
 		currency = CurrencyService().get(code="KSH")
 		assert currency is not None, "Should retrieve currency"
 	
 	def test_filter(self):
 		""" Test CurrencyService filter method """
-		mixer.cycle(3).blend('order_management.base.Currency')
+		mixer.cycle(3).blend('base.Currency')
 		currencies = CurrencyService().filter()
 		assert currencies is not None, "Should retrieve currencies"
 		assert currencies.count() == 3, "Should have 3 currencies"
 	
 	def test_update(self):
 		""" Test CurrencyService update method """
-		euro = mixer.blend('order_management.base.Currency', name="Euro", code='$')
+		euro = mixer.blend('base.Currency', name="Euro", code='$')
 		updated_euro = CurrencyService().update(euro.id, code="€")
 		assert updated_euro.name == "€", "Should update currency"
 
@@ -80,19 +80,19 @@ class TestCategoryService(TestSetUp):
 	
 	def test_get(self):
 		""" Test CategoryService get method """
-		mixer.blend('order_management.base.Category', name='Clothing')
+		mixer.blend('base.Category', name='Clothing')
 		category = CategoryService().get(name="Clothing")
 		assert category is not None, "Should retrieve category"
 	
 	def test_filter(self):
 		""" Test CategoryService filter method """
-		mixer.cycle(3).blend('order_management.base.Category')
+		mixer.cycle(3).blend('base.Category')
 		categories = CategoryService().filter()
 		assert categories is not None, "Should retrieve categories"
 		assert categories.count() == 3, "Should have 3 categories"
 	
 	def test_update(self):
 		""" Test CategoryService update method """
-		category = mixer.blend('order_management.base.Currency', name="Food")
+		category = mixer.blend('base.Currency', name="Food")
 		updated_category = CategoryService().update(category.id, name="Food and Beverages")
 		assert updated_category.name == "Food and Beverages", "Should update category"

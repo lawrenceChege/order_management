@@ -9,7 +9,6 @@ class TestBaseModels(TestSetUp):
 	"""
 	Test base module models
 	"""
-	
 	def test_state_str(self):
 		"""Test for state model"""
 		obj = mixer.blend('base.State')
