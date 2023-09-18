@@ -11,6 +11,6 @@ class ActionAdmin(admin.ModelAdmin):
 	"""
 	list_filter = ('date_created',)
 	list_display = (
-	'user', 'action_type', 'reference', 'source_ip', 'request', 'status_code', 'trace', 'description', 'date_modified',
-	'date_created')
+		'user', 'action_type', 'reference', 'source_ip', 'request', 'status_code', 'trace', 'description',
+		'date_modified', 'date_created')
 	search_fields = ('reference',)
