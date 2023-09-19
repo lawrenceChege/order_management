@@ -1,10 +1,12 @@
 """
-This module holds administration for LoanType, LoanProduct and product settings
+This module has helper methods for product views
 """
 
 import logging
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import JsonResponse, HttpRequest
+
+from audit.models import Action
 from base.backend.services import StateService
 from base.backend.utils.validators import validate_name, validate_email,  validate_uuid4
 from corporate.backend.serializers import CorporateSerializer
@@ -15,7 +17,7 @@ from product.backend.services import LoanTypeService, LoanProductService
 lgr = logging.getLogger(__name__)
 
 
-class ProductAdministration(TransactionLogBase):
+class ProductAdministration(Action):
     """
     This class handles the methods for creating, updating, reading and deleting
     product
