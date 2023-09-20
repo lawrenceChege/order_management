@@ -8,7 +8,7 @@ from audit.backend.generate_code import generate_internal_reference
 
 class ActionType(NamedModel):
 	""" Defines an action in the system"""
-	state = models.ForeignKey(State, default=State.default_state(), on_delete=models.CASCADE)
+	state = models.ForeignKey(State, default=State.default_state, on_delete=models.CASCADE)
 	
 	def __str__(self):
 		return '%s %s' % (self.name, self.state)
