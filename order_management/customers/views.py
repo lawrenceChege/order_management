@@ -30,10 +30,10 @@ def register(request):
     return render(request, 'registration/register.html')  # Display registration form
 
 
-class CustomerViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows customers to be viewed or edited.
-    """
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
-    permission_classes = [permissions.IsAuthenticated]
+# class CustomerViewSet(viewsets.ModelViewSet):
+#     """
+#     API endpoint that allows customers to be viewed or edited.
+#     """
+#     queryset = Customer.objects.all()
+#     serializer_class = CustomerSerializer
+#     permission_classes = [permissions.AllowAny]

@@ -5,8 +5,8 @@ from customers.models import Customer
 
 
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
-	user = UserSerializer(read_only=True)
-	status = StateSerializer(read_only=True)
+	user = UserSerializer()
+	status = StateSerializer()
 	
 	class Meta:
 		model = Customer
