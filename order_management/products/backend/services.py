@@ -4,5 +4,5 @@ from products.models import Product
 
 class ProductService(ServiceBase):
 	""" Service for product model """
-	manager = Product.onjects
+	manager = Product.objects
 	

@@ -1,17 +1,27 @@
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import User, Group
+from base.models import BaseModel, State
 
-from base.models import BaseModel
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+# Create a new group
+default_group, created = Group.objects.get_or_create(name='Customers')
+
+
+@receiver(post_save, sender=User)
+def assign_default_group(sender, instance, created, **kwargs):
+	if created:
+		# Assign the user to the default group
+		default_group = Group.objects.get(name='Customers')
+		instance.groups.add(default_group)
 
 
 # Create your models here.
-class Customer(User):
+class Customer(BaseModel):
 	""" Define Customer model"""
-	def __int__(self):
-		super(Customer, self).__int__()
-		
-	# user = models.OneToOneField(User, related_name="customer", on_delete=models.CASCADE)
-	code = models.CharField(max_length=10)
+	user = models.OneToOneField(User, related_name="customer", on_delete=models.CASCADE)
+	status = models.ForeignKey(State, default=State.default_state(), on_delete=models.CASCADE)
 	
 	def __str__(self):
-		return f'{self.user.username}'
+		return f'{self.code}'

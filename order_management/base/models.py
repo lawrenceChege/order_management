@@ -1,7 +1,9 @@
 """
 Base Models
 """
-from uuid_extensions import uuid7
+from uuid import uuid4
+
+# from uuid_extensions import uuid7
 from django.utils import timezone
 from django.db import models
 
@@ -11,7 +13,7 @@ class BaseModel(models.Model):
 	Define the basic structure of a model
 	"""
 	synced = models.BooleanField(default=False)
-	id = models.UUIDField(max_length=50, default=uuid7(), unique=True, editable=False, primary_key=True)
+	id = models.UUIDField(max_length=50, default=uuid4(), unique=True, editable=False, primary_key=True)
 	date_modified = models.DateTimeField(auto_now=True)  # (default = timezone.now)
 	date_created = models.DateTimeField(auto_now_add=True)  # (default = timezone.now)
 

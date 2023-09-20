@@ -1,4 +1,5 @@
-""" Theis module holds services for customer module """
+""" This module holds services for customer module """
+
 from base.backend.service_base import ServiceBase
 from customers.models import Customer
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from order_management.audit.models import Action
+from audit.models import Action
 
 
 # Register your models here.

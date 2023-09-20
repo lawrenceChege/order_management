@@ -1,10 +1,12 @@
 import logging
 from django.http import JsonResponse, Http404
-from rest_framework import status
+from rest_framework import status, viewsets, permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .backend.product_base import ProductBase
+from .backend.seriallizers import ProductSerializer
+from .models import Product
 
 lgr = logging.getLogger(__name__)
 
@@ -103,7 +105,7 @@ def update_product(request):
 
 
 @api_view(('DELETE',))
-def delete_loan_product(request):
+def delete_product(request):
 	""" Api end point for deleting  Loan product
 	deletes a single product using it's pk
 	"""
@@ -128,3 +130,12 @@ def delete_loan_product(request):
 				'description': "failed to delete loan product"
 			}
 		)
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+	"""
+	API endpoint that allows products to be viewed or edited.
+	"""
+	queryset = Product.objects.all()
+	serializer_class = ProductSerializer
+	permission_classes = [permissions.IsAuthenticatedOrReadOnly]

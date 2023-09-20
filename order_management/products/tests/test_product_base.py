@@ -9,7 +9,7 @@ from api.tests.test_setup import TestSetUp
 from product.administration.product_administration import ProductAdministration
 
 
-class TestProductAdministration(TestSetUp, TestCase):
+class TestProductBase(TestSetUp, TestCase):
     """
         Test for Product Administration
     """
