@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'orders',
+    'oidc_provider',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,27 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+# Django OIDC Auth settings
+AUTHENTICATION_BACKENDS = [
+    'django_oidc_auth.auth.OIDCAuthenticationBackend',
+]
+
+OIDC_RP_CLIENT_ID = '57679188537-en954s0qng2i514o93o2uscsaed3847d.apps.googleusercontent.com'
+OIDC_RP_CLIENT_SECRET = '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'
+OIDC_OP_AUTHORIZATION_ENDPOINT = 'https://accounts.google.com/o/oauth2/v2/auth'
+OIDC_OP_TOKEN_ENDPOINT = 'https://oauth2.googleapis.com/token'
+OIDC_OP_USER_ENDPOINT = 'https://openidconnect.googleapis.com/v1/userinfo'
+OIDC_OP_JWKS_ENDPOINT = 'https://www.googleapis.com/oauth2/v3/certs'
+OIDC_OP_LOGOUT_ENDPOINT = 'https://accounts.google.com/o/oauth2/revoke'
+OIDC_OP_LOGOUT_URL_METHOD = 'GET'
+
+# LOGIN_URL = 'oidc_authentication_init'
+LOGIN_URL = '/accounts/login/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+"AIzaSyCFC__W4s1FLeMeQRI5zks_2EhBr-s5H4U"

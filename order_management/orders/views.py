@@ -1,4 +1,7 @@
 from rest_framework import generics, viewsets
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 from .models import Customer, Order
 from .serializers import CustomerSerializer, OrderSerializer
 
@@ -16,11 +19,15 @@ class CustomerDetailView(generics.RetrieveUpdateDestroyAPIView):
 class OrderListCreateView(generics.ListCreateAPIView):
 	queryset = Order.objects.all()
 	serializer_class = OrderSerializer
+	authentication_classes = [SessionAuthentication]  # Use the appropriate authentication method
+	permission_classes = [IsAuthenticated]
 
 
 class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Order.objects.all()
 	serializer_class = OrderSerializer
+	authentication_classes = [SessionAuthentication]  # Use the appropriate authentication method
+	permission_classes = [IsAuthenticated]
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -31,3 +38,6 @@ class CustomerViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
 	queryset = Order.objects.all()
 	serializer_class = OrderSerializer
+	authentication_classes = [SessionAuthentication]  # Use the appropriate authentication method
+	permission_classes = [IsAuthenticated]
+
