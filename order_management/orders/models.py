@@ -6,7 +6,7 @@ from django.db import models
 class Customer(models.Model):
 	name = models.CharField(max_length=255)
 	code = models.CharField(max_length=25)
-	phone_number = models.IntegerField(max_length=25)
+	phone_number = models.IntegerField()
 
 
 class Order(models.Model):
