@@ -7,22 +7,17 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0003_alter_category_id_alter_currency_id_alter_state_id'),
+        ('audit', '0002_alter_action_id_alter_actiontype_id'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='category',
+            model_name='action',
             name='id',
             field=models.UUIDField(default=uuid.UUID('9626c060-e965-4f66-b76b-041902df5f20'), editable=False, primary_key=True, serialize=False, unique=True),
         ),
         migrations.AlterField(
-            model_name='currency',
-            name='id',
-            field=models.UUIDField(default=uuid.UUID('9626c060-e965-4f66-b76b-041902df5f20'), editable=False, primary_key=True, serialize=False, unique=True),
-        ),
-        migrations.AlterField(
-            model_name='state',
+            model_name='actiontype',
             name='id',
             field=models.UUIDField(default=uuid.UUID('9626c060-e965-4f66-b76b-041902df5f20'), editable=False, primary_key=True, serialize=False, unique=True),
         ),
