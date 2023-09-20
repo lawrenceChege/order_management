@@ -23,7 +23,7 @@ urlpatterns = [
     path('', include('rest_framework.urls', namespace='rest_framework')),
     path('products/', include('products.urls')),
     path('base/', include('base.urls')),
-    path('customers/', include('customers.urls')),
+    path('', include('customers.urls')),
     path('audit/', include('audit.urls')),
     path('orders/', include('orders.urls')),
     # path('api/', include('api.urls')),
