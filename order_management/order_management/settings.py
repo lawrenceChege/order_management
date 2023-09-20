@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@*(44za-d^5=a-o6c^f_=@ka@eh3uwpb$q$(ljl!-c=(i5obu*'
+SECRET_KEY = 'django-insecure-y83=&@9+v*cactwk3v8!4782ad8)yonv@-l=qf)$)n#8l42c+4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,13 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'base',
-    'audit',
-    'customers',
-    'products',
-    'orders',
-    # 'notifications',
 ]
 
 MIDDLEWARE = [
@@ -87,14 +80,7 @@ DATABASES = {
     }
 }
 
-REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler',
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -135,9 +121,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DEFAULT_COUNTRY_CODE = '254'
-
-DEFAULT_CURRENCY_CODE = 'KES'
-
-PHONE_NUMBER_LENGTH = 12
